@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "photobook",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "F:\\AWS\\amplify + graphql\\photobook\\amplify\\backend\\api\\photobook\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authphotobook1e1b1ff8"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      },
+      "perModelResolutionStrategy": [
+        {
+          "resolutionStrategy": {
+            "type": "AUTOMERGE"
+          },
+          "entityName": "Album"
+        },
+        {
+          "resolutionStrategy": {
+            "type": "AUTOMERGE"
+          },
+          "entityName": "Photo"
+        }
+      ]
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2022-01-25T11:07:39.367Z",
+        "keyDescription": "MyFirstAPIKey"
+      }
+    ]
+  }
+}

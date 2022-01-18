@@ -24,5 +24,38 @@
         ]
       }
     }
+  },
+  "storage": {
+    "AmplifyPhotoStorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  },
+  "api": {
+    "photobook": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authphotobook1e1b1ff8"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 7,
+                "apiKeyExpirationDate": "2022-01-25T11:07:39.367Z",
+                "description": "MyFirstAPIKey"
+              }
+            }
+          ]
+        }
+      }
+    }
   }
 }

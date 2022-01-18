@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "photobook",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authphotobook1e1b1ff8",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2022-01-18T07:08:24.791Z"
+}
