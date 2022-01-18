@@ -8,18 +8,22 @@ import {listAlbums as listAlbumsQuery} from "@/graphql/queries";
 export const albumInfo = {
     namespaced: true,
     state: { 
-        album: null,
+        albums: null,
     },
     mutations: {
         setAlbums(state, payload){
-            state.album = payload;
+            state.albums = payload;
+            console.log(state.albums);
         }
     },
     actions: {
-        async createAlbum(_, newAlbum){
+        async createAlbum({dispatch}, newAlbum){
             try {
+                console.log(1);
+
                 await API.graphql(graphqlOperation(createAlbumMutation, {input: newAlbum}));
-                return Promise.resolve("Success");
+                console.log(2);
+                dispatch("getAlbumsData");
             } catch (e) {
                 console.log(e);
                 return Promise.reject(e);
@@ -30,7 +34,8 @@ export const albumInfo = {
         },
         async getAlbumsData({ commit}){
             const albumsData = await API.graphql(graphqlOperation(listAlbumsQuery))
-            commit('setAlbums', albumsData.data.listAlbum.items);
+            commit('setAlbums', albumsData.data.listAlbums.items);
+            // console.log(albumsData.data.listAlbums.items);
         },
     },
     getters: {
